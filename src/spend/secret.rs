@@ -10,17 +10,17 @@ use super::stealth::StealthAddress;
 use crate::sponge;
 use crate::{JubJubScalar, ViewKey};
 
+use canonical::Canon;
+use canonical_derive::Canon;
 use dusk_jubjub::GENERATOR_EXTENDED;
-
-use std::fmt;
-
 use rand::rngs::StdRng;
 use rand::SeedableRng;
 use rand::{CryptoRng, RngCore};
 use sha2::{Digest, Sha256};
+use std::fmt;
 
 /// Secret pair of `a` and `b`
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Canon)]
 pub struct SecretKey {
     a: JubJubScalar,
     b: JubJubScalar,

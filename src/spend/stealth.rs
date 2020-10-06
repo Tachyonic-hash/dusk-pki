@@ -6,6 +6,8 @@
 
 use crate::{decode::decode, Error, JubJubAffine, JubJubExtended};
 
+use canonical::Canon;
+use canonical_derive::Canon;
 use std::convert::{TryFrom, TryInto};
 use std::fmt;
 use subtle::{Choice, ConstantTimeEq};
@@ -21,7 +23,7 @@ pub trait Ownable {
 //. system.
 /// A `StealthAddress` is composed by a one-time public key (`pk_r`, the actual
 // address) and a random point `R`.
-#[derive(Debug, Clone, Copy)]
+#[derive(Debug, Clone, Copy, Canon)]
 pub struct StealthAddress {
     pub(crate) R: JubJubExtended,
     pub(crate) pk_r: JubJubExtended,

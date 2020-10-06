@@ -12,6 +12,8 @@ use crate::{
     PublicSpendKey, SecretSpendKey,
 };
 
+use canonical::Canon;
+use canonical_derive::Canon;
 use dusk_jubjub::GENERATOR_EXTENDED;
 use std::convert::TryFrom;
 use std::fmt;
@@ -21,7 +23,7 @@ use subtle::{Choice, ConstantTimeEq};
 ///
 /// The notes are encrypted against secret a, so this is used to decrypt the
 /// blinding factor and value
-#[derive(Debug, Clone, Copy)]
+#[derive(Debug, Clone, Copy, Canon)]
 pub struct ViewKey {
     a: JubJubScalar,
     B: JubJubExtended,
